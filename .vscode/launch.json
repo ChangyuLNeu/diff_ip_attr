@@ -1,0 +1,177 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        /*for test     选哟change check point
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            
+        },*/
+        /* for test train*/
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            /* for test
+            "args":[   
+                        "--num_workers", "8",
+                        "--batch_size", "16",
+                        "--run_name",  "patches-CelebA_bias_cmi_l1",//"patches-CelebA_bias_gt_cmi",//"patches-CelebA_bias_gt",//"patches-CelebA_random",  //"debug_random",          //debug
+                        "--name", "patches-CelebA_bias_cmi_l1",//"patches-CelebA_bias_gt_cmi",//"patches-CelebA_bias_gt",//"patches-CelebA_random", 
+                        "--sampling", "biased", //"random", // "biased",
+                        "--experiment_type", "patches-CelebA", //"patches-MNIST",
+                        //"--random_baseline",     // should false and use querier    when train it should be true
+                        //"--train_querier",
+                        "--data_dir",      "/storage/changyu/datasets/CelebA/celeba/img_align_celeba",
+                        "--save_dir",      "/storage/changyu/results/clevr_diff_ip/",
+                        "--gpu_id",        "1",
+                        "--test",
+                        "--freeze_unet",
+                        "--load_epoch",       "499",
+                        "--epochs",      "500",
+                        "--sample_ids",        "20",  "50", "90",
+                        //"--include_gt",
+            ]*/
+            /* train with gt 
+            "args":[
+                        "--num_workers", "8",
+                        "--batch_size", "16",
+                        "--run_name", "debug",//"patches-CelebA_random",  //"debug_random",          //debug
+                        //"--name", "patches-CelebA_random", 
+                        "--sampling",  "random", // "biased",
+                        "--experiment_type", "patches-CelebA", //"patches-MNIST",
+                        //"--random_baseline",     // should false and use querier    when train it should be true
+                        "--train_querier",
+                        "--data_dir",      "/storage/changyu/datasets/CelebA/celeba/img_align_celeba",
+                        "--save_dir",      "/storage/changyu/results/clevr_diff_ip/",
+                        "--gpu_id",        "1",
+                        "--epoch",       "99",
+                        "--loss_type",   "l2",
+                        "--include_gt",
+            ]*/
+
+/*with gt. use cmi to train querier
+            "args":[
+                        "--num_workers", "8",
+                        "--batch_size", "16",
+                        "--run_name", "patches-CelebA_random_gt",//"patches-CelebA_random",  //"debug_random",          //debug
+                        "--name", "patches-CelebA_random_gt_cmi", 
+                        "--sampling",  "biased",//"random", // "biased",
+                        "--experiment_type", "patches-CelebA", //"patches-MNIST",
+                        //"--random_baseline",     // should false and use querier    when train it should be true
+                        "--train_querier",
+                        "--data_dir",      "/storage/changyu/datasets/CelebA/celeba/img_align_celeba",
+                        "--save_dir",      "/storage/changyu/results/clevr_diff_ip/",
+                        "--gpu_id",        "2",
+                        "--epoch",       "500",
+                        "--load_epoch",    "499",
+                        "--loss_type",   "l2",
+                        "--include_gt",
+                        "--freeze_unet",
+                        "--cmi",
+                        "--restart_training",
+            ]*/
+/*debug cmi
+            "args":[
+                        "--num_workers", "8",
+                        "--batch_size", "16",
+                        "--run_name", "patches-CelebA_random_gt_cmi",//"patches-CelebA_random",  //"debug_random",          //debug
+                        "--name", "patches-CelebA_random_gt_cmi", 
+                        "--sampling",  "biased",//"random", // "biased",
+                        "--experiment_type", "patches-CelebA", //"patches-MNIST",
+                        //"--random_baseline",     // should false and use querier    when train it should be true
+                        "--train_querier",
+                        "--data_dir",      "/storage/changyu/datasets/CelebA/celeba/img_align_celeba",
+                        "--save_dir",      "/storage/changyu/results/clevr_diff_ip/",
+                        "--gpu_id",        "3",
+                        "--epoch",       "500",
+                        "--load_epoch",    "0",
+                        "--loss_type",   "l2",
+                        "--include_gt",
+                        "--freeze_unet",
+                        "--cmi",
+                        "--restart_training",
+            ]
+*/
+/* train with attributes diffusion only*/
+            "args":[
+                        "--num_workers", "8",
+                        "--batch_size", "16",
+                        "--run_name", "attr-CelebA_diff_only",//"patches-CelebA_random",  //"debug_random",          //debug
+                        "--name", "attr-CelebA_diff_only", 
+                        "--sampling",  "random",//"random", // "biased",
+                        "--experiment_type", "attributes",//"patches-CelebA",// "attributes",
+                        //"--random_baseline",     // should false and use querier    when train it should be true
+                        //"--train_querier",
+                        "--data_dir",      "/storage/changyu/datasets/CelebA/celeba/img_align_celeba",
+                        "--save_dir",      "/storage/changyu/results/clevr_diff_ip/",
+                        "--gpu_id",        "1",
+                        "--epoch",       "499",
+                        "--loss_type",   "l2",
+                        "--load_epoch", "270",
+                        "--sample_ids",        "9",  "19", "29", "39",
+
+
+            ]
+
+/* train with attributes train querier
+            "args":[
+                        "--num_workers", "8",
+                        "--batch_size", "16",
+                        "--run_name", "attr-CelebA_diff_only",//"patches-CelebA_random",  //"debug_random",          //debug
+                        "--name", "attr-CelebA_querier_only", 
+                        "--sampling",  "biased",//"random", // "biased",
+                        "--experiment_type", "attributes",//"patches-CelebA",// "attributes",
+                        //"--random_baseline",     // should false and use querier    when train it should be true
+                            //"--train_querier",
+                        "--data_dir",      "/storage/changyu/datasets/CelebA/celeba/img_align_celeba",
+                        "--save_dir",      "/storage/changyu/results/clevr_diff_ip/",
+                        "--gpu_id",        "1",
+                        "--epoch",       "499",
+                        "--loss_type",   "l2",
+                        "--cmi",
+                        "--train_querier",
+                        "--freeze_unet",
+                        "--load_epoch", "270",
+                        "--restart_training",
+                        "--sample_ids",        "9",  "19", "29", "39",
+            ]
+*/
+/* train with attributes train querier
+"args":[
+    "--num_workers", "8",
+    "--batch_size", "16",
+    "--run_name", "attr-CelebA_querier_only",//"patches-CelebA_random",  //"debug_random",          //debug
+    "--name", "attr-CelebA_querier_only", 
+    "--sampling",  "biased",//"random", // "biased",
+    "--experiment_type", "attributes",//"patches-CelebA",// "attributes",
+    //"--random_baseline",     // should false and use querier    when train it should be true
+        //"--train_querier",
+    "--data_dir",      "/storage/changyu/datasets/CelebA/celeba/img_align_celeba",
+    "--save_dir",      "/storage/changyu/results/clevr_diff_ip/",
+    "--gpu_id",        "1",
+    "--epoch",       "499",
+    "--loss_type",   "l2",
+    "--cmi",
+    "--train_querier",
+    "--freeze_unet",
+    "--load_epoch", "240",
+    "--restart_training",
+    "--sample_ids",        "9",  "19", "29", "39",
+    "--test"
+]*/
+            
+        }
+
+    ]
+}
